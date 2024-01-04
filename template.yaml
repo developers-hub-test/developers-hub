@@ -5,7 +5,7 @@ metadata:
   title: Node.js-Application
   description: Create a new Node.js application
 spec:
-  owner: developers-hub-test/rhdh-sample-app
+  owner: nagesh
   type: service
   parameters:
     - title: Application Name
