@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: rhdh-sample-app
   annotations:
-    github.com/project-slug: developers-hub-test/rhdh-sample-app
+    github.com/project-slug: developers-hub-test/rhdh-node-app
 spec:
   type: other
   lifecycle: unknown
