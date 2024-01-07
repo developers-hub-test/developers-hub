@@ -14,7 +14,7 @@ spec:
   properties:
     appName:
       type: string
-  steps:
+  # steps:
 #     - id: create-react-app
 #       name: Create React App
 #       action: exec:create-react-app
