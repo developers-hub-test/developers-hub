@@ -6,9 +6,9 @@ metadata:
   description: Create a new CRA website project
   tags:
     - react
-    - cra
+    - nagesh
 spec:
-  owner: web@example.com
+  owner: nagesh@redhat.com
   type: website
   parameters:
     - title: Provide some simple information
