@@ -1,19 +1,19 @@
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: node-app-template
-  title: Node.js-Application
-  description: Create a new Node.js application
-spec:
-  owner: nagesh
-  type: service
-  parameters:
-    - title: Application Name
-      name: appName
-      required: true
-  properties:
-    appName:
-      type: string
+# apiVersion: scaffolder.backstage.io/v1beta3
+# kind: Template
+# metadata:
+#   name: node-app-template
+#   title: Node.js-Application
+#   description: Create a new Node.js application
+# spec:
+#   owner: nagesh
+#   type: service
+#   parameters:
+#     - title: Application Name
+#       name: appName
+#       required: true
+#   properties:
+#     appName:
+#       type: string
   # steps:
 #     - id: create-react-app
 #       name: Create React App
@@ -33,30 +33,30 @@ spec:
 #         command: start
 #         directory: ${{ steps.create-react-app.outputs.appDir }}
 
-# apiVersion: scaffolder.backstage.io/v1beta3
-# kind: Template
-# metadata:
-#   name: node-app-template
-#   title: Node.js-Application
-#   description: Create a new Node.js application
-# spec:
-#   owner: backstage/techdocs-core
-#   type: service
-#   parameters:
-#     - title: Application-Name
-#       required:
-#         - name
-#       properties:
-#         name:
-#           type: string
-#           description: Name of the application
-#     - title: Description
-#       required:
-#         - description
-#       properties:
-#         description:
-#           type: string
-#           description: Description of the application
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: node-app-template
+  title: Node.js-Application
+  description: Create a new Node.js application
+spec:
+  owner: backstage/techdocs-core
+  type: service
+  parameters:
+    - title: Application-Name
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the application
+    - title: Description
+      required:
+        - description
+      properties:
+        description:
+          type: string
+          description: Description of the application
   steps:
     - id: create-dir
       name: Create-application-directory
