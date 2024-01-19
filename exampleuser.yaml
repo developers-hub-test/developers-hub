@@ -4,6 +4,6 @@ metadata:
   name: nageshr 
 spec:
   profile:
-    displayName: user1 
+    displayName: user_nagesh 
     email: nagesh@redhat.com
   memberOf: [User, Group]
