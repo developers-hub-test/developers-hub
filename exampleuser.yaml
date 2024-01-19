@@ -6,4 +6,4 @@ spec:
   profile:
     displayName: user1 
     email: nagesh@redhat.com
-  memberOf: []
+  memberOf: [User, Group]
