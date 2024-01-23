@@ -7,33 +7,33 @@ components:
   - name: development-tooling
     container:
       image: registry.redhat.io/devspaces/udi-rhel8:3.4
-      env:
-        - name: QUARKUS_HTTP_HOST
-          value: 0.0.0.0
-        - name: MAVEN_OPTS
-          value: "-Dmaven.repo.local=/home/user/.m2/repository" 
+      # env:
+      #   - name: QUARKUS_HTTP_HOST
+      #     value: 0.0.0.0
+      #   - name: MAVEN_OPTS
+      #     value: "-Dmaven.repo.local=/home/user/.m2/repository" 
       memoryLimit: 5Gi
       cpuLimit: 2500m
       volumeMounts:
-        - name: m2
-          path: /home/user/.m2
+        - name: npm
+          path: /home/user/.npm
       endpoints:
-        - name: quarkus-development-server
-          targetPort: 8080
+        - name: react-development-server
+          targetPort: 3000
           exposure: public
           secure: false
           protocol: http
         - name: debug
-          targetPort: 5005
+          targetPort: 3000
           exposure: none
           secure: false
           protocol: tcp
         - name: tests
-          targetPort: 8081
+          targetPort: 3000
           exposure: none
           secure: false
           protocol: tcp          
-  - name: m2
+  - name: npm
     volume:
       size: 1G
 commands:
@@ -41,7 +41,7 @@ commands:
     exec:
       label: "1. Package the application"
       component: development-tooling
-      commandLine: "./mvnw package"
+      commandLine: "npm build"
       group:
         kind: build
         isDefault: true
@@ -49,14 +49,14 @@ commands:
     exec:
       label: "2. Start Development mode (Hot reload + debug)"
       component: development-tooling
-      commandLine: "./mvnw compile quarkus:dev"
+      commandLine: "npm start"
       group:
         kind: run
         isDefault: true
-  - id: fix-java-version
-    exec:
-      component: development-tooling
-      commandLine: 'rm -rf ${HOME}/.java/current/* && ln -s /usr/lib/jvm/java-17-openjdk/* ${HOME}/.java/current'
-events:
-  postStart:
-    - fix-java-version
+  # - id: fix-java-version
+  #   exec:
+  #     component: development-tooling
+  #     commandLine: 'rm -rf ${HOME}/.java/current/* && ln -s /usr/lib/jvm/java-17-openjdk/* ${HOME}/.java/current'
+# events:
+#   postStart:
+#     - fix-java-version
