@@ -1,62 +1,47 @@
 schemaVersion: 2.1.0
 metadata:
-  generateName: ${{values.repoName}}
-attributes:
-  controller.devfile.io/storage-type: ephemeral
+  name: nodejs-react
+  displayName: React
+  description: "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+    It is maintained by Meta and a community of individual developers and companies."
+  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/react.svg
+  tags:
+    - Node.js
+    - React
+  projectType: React
+  language: TypeScript
+  provider: Red Hat
+  version: 2.0.2
+starterProjects:
+  - name: nodejs-react-starter
+    git:
+      checkoutFrom:
+        revision: main
+      remotes:
+        origin: https://github.com/devfile-samples/devfile-stacks-nodejs-react.git
 components:
-  - name: development-tooling
-    container:
-      image: registry.redhat.io/devspaces/udi-rhel8:3.4
-      # env:
-      #   - name: QUARKUS_HTTP_HOST
-      #     value: 0.0.0.0
-      #   - name: MAVEN_OPTS
-      #     value: "-Dmaven.repo.local=/home/user/.m2/repository" 
-      memoryLimit: 5Gi
-      cpuLimit: 2500m
-      volumeMounts:
-        - name: npm
-          path: /home/user/.npm
+  - container:
       endpoints:
-        - name: react-development-server
+        - name: http-react
           targetPort: 3000
-          exposure: public
-          secure: false
-          protocol: http
-        - name: debug
-          targetPort: 3000
-          exposure: none
-          secure: false
-          protocol: tcp
-        - name: tests
-          targetPort: 3000
-          exposure: none
-          secure: false
-          protocol: tcp          
-  - name: npm
-    volume:
-      size: 1G
+      image: registry.access.redhat.com/ubi8/nodejs-16:1-139
+      args: ['tail', '-f', '/dev/null']
+      memoryLimit: 1024Mi
+    name: runtime
 commands:
-  - id: package
-    exec:
-      label: "1. Package the application"
-      component: development-tooling
-      commandLine: "npm build"
+  - exec:
+      commandLine: npm install
+      component: runtime
       group:
+        isDefault: true
         kind: build
-        isDefault: true
-  - id: start-dev
-    exec:
-      label: "2. Start Development mode (Hot reload + debug)"
-      component: development-tooling
-      commandLine: "npm start"
+      workingDir: ${PROJECT_SOURCE}
+    id: install
+  - exec:
+      commandLine: npm run dev
+      component: runtime
       group:
-        kind: run
         isDefault: true
-  # - id: fix-java-version
-  #   exec:
-  #     component: development-tooling
-  #     commandLine: 'rm -rf ${HOME}/.java/current/* && ln -s /usr/lib/jvm/java-17-openjdk/* ${HOME}/.java/current'
-# events:
-#   postStart:
-#     - fix-java-version
+        kind: run
+      workingDir: ${PROJECT_SOURCE}
+    id: run
