@@ -8,6 +8,11 @@ metadata:
   annotations:
     github.com/project-slug: ${{values.destination.owner + "/" + values.destination.repo}}
     backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://devspaces${{values.cluster}}/#https://${{values.host}}/${{values.destination}}
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+
 spec:
   type: website
   lifecycle: experimental
