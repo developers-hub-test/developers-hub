@@ -60,7 +60,7 @@ spec:
           owner: ${{ parameters.owner }}
           cluster: {{ cluster_subdomain }}
           host: {{ '${{ parameters.repo.host }}' }}
-          destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
+          destination_own: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
                               
 
     - id: publish
