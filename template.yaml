@@ -53,9 +53,9 @@ spec:
         copyWithoutRender:
           - .github/workflows/*
         values:
-          component_id: {{ '${{ parameters.component_id }}' }}
+          component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          # destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
           cluster: {{ cluster_subdomain }}
           host: {{ '${{ parameters.repo.host }}' }}
