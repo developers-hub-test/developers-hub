@@ -55,7 +55,7 @@ spec:
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
-          destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
+          destination: {{ '${{ parameters.repo.owner }}' }}#/{{ '${{ parameters.component_id }}' }}
           # destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
           cluster: {{ cluster_subdomain }}
