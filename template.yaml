@@ -57,9 +57,9 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
-          cluster: {{ cluster_subdomain }}
-          host: {{ '${{ parameters.repo.host }}' }}
-          destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
+          # cluster: {{ cluster_subdomain }}
+          # host: {{ '${{ parameters.repo.host }}' }}
+          # destination: {{ '${{ parameters.repo.owner }}' }}/{{ '${{ parameters.component_id }}' }}
                               
 
     - id: publish
