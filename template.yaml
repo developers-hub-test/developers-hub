@@ -57,7 +57,7 @@ spec:
           description:  ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
-          cluster: {{ cluster_subdomain }}
+          # cluster: {{ cluster_subdomain }}
           host: ${{ parameters.repo.host }}
           destination_own: ${{ parameters.repo.owner }}
                               
